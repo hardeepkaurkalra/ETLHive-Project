@@ -1,5 +1,7 @@
 package ApplicationPages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -41,7 +43,8 @@ public class HomePage {
 	
 	 public String getApplicationTitle(){
 	    	
-	    	return (driver.getTitle());
+			driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);	
+		 return (driver.getTitle());
 	    }
 
 	

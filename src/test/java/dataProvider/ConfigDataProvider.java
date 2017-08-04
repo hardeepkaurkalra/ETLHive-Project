@@ -6,45 +6,43 @@ import java.util.Properties;
 
 public class ConfigDataProvider {
 	
-	Properties pro ;
+	 Properties pro;
 	
-	public void ConfigReader(){
+     public  ConfigDataProvider(){
 		
-        try {
-			File src = new File("C:\\Users\\hp1\\workspace\\ProjectPhase\\Configuration\\conifg.properties");
+		try {
+			File src = new File("./Configuration/config.properties");
 			
 			FileInputStream fis = new FileInputStream(src);
 			
 			pro = new Properties();
 			
 			pro.load(fis);
-
 		} catch (Exception e) {
-			
-			System.out.println(e.getMessage());
-	        }
 
-        }
-	
-	    public String getChromePath(){
+			System.out.println("Exception is "+e.getMessage());
+			
+		}
+		
+    }
+     
+     public String getChromePath(){
 	    	String path = pro.getProperty("ChromeDriver");
 	    	
 	    	return path;
 	    }
+     
+     
+     public String getIEPath(){
+	    	String path = pro.getProperty("IEDriver");
+	    	
+	    	return path;
+	    }
 	    
-	    public String getApplicationUrl(){
-	    	//String url = "url";
-	    	String url=pro.getProperty("URL");
+	 public String getApplicationUrl(){
+	    	String url = pro.getProperty("URL");
 	    	
 	    	return url;
 	    }
-	    
-	    public String getExcelPath(){
-	    	String excelpath=pro.getProperty(getExcelPath());
-			return excelpath;
-	    	
-	    }
-	    
-	
+
 }
-	

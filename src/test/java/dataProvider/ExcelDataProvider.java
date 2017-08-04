@@ -7,20 +7,19 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelDataProvider {
-
+	
 	XSSFWorkbook wb;
 	XSSFSheet sheet;
-	ConfigDataProvider config=new ConfigDataProvider();
 	
-	public  void ExcelReadLibConfig (){
+	public ExcelDataProvider (){
 		try {
-			File src = new File(config.getExcelPath());
+			File src = new File("./ApplicationTestData/AppData.xlsx");
 			FileInputStream fis = new FileInputStream(src);
 			wb = new XSSFWorkbook(fis);
-		} 
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-     		}
+		} catch (Exception e) {
+			
+			System.out.println("Exception is "+e.getMessage());
+		}
 	
 	}
 	
@@ -29,9 +28,11 @@ public class ExcelDataProvider {
 		String data = sheet.getRow(row).getCell(col).getStringCellValue();
 		return data ;
 	}
+	
 	public String getData(String sheetname, int row, int col){
 		sheet= wb.getSheet(sheetname);
 		String data = sheet.getRow(row).getCell(col).getStringCellValue();
 		return data ;
 	}
+
 }
